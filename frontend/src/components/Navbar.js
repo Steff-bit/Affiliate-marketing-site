@@ -69,7 +69,8 @@ const Navbar = () => {
                     onMouseEnter={() => setDropdownOpen(item.name)}
                     onMouseLeave={() => setDropdownOpen(false)}
                   >
-                    <button
+                    <Link
+                      to={item.href}
                       className={`flex items-center space-x-1 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                         location.pathname.startsWith(item.href)
                           ? 'text-blue-600 bg-blue-50'
@@ -80,7 +81,7 @@ const Navbar = () => {
                     >
                       <span>{item.name}</span>
                       <ChevronDownIcon className="w-4 h-4" />
-                    </button>
+                    </Link>
                     
                     <AnimatePresence>
                       {dropdownOpen === item.name && (
@@ -89,7 +90,9 @@ const Navbar = () => {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 10 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute top-full left-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-slate-200 py-2"
+                          className="absolute top-full left-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-slate-200 py-2 z-50"
+                          onMouseEnter={() => setDropdownOpen(item.name)}
+                          onMouseLeave={() => setDropdownOpen(false)}
                         >
                           {item.dropdown.map((dropItem) => (
                             <Link
