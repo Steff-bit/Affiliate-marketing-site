@@ -140,6 +140,7 @@ const Navbar = () => {
               className={`p-2 rounded-lg transition-colors ${
                 scrolled ? 'text-slate-700 hover:bg-slate-100' : 'text-white hover:bg-white/10'
               }`}
+              aria-label="Toggle mobile menu"
             >
               {isOpen ? (
                 <XMarkIcon className="w-6 h-6" />
